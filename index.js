@@ -1,6 +1,6 @@
+var api = "https://crudcrud.com/api/381b1154c91d49e7aa77c02ac54bc0ab";
 function expense(event) {
   event.preventDefault();
-  let api = "https://crudcrud.com/api/558a45ed74b04ad8b5dab7c6ebd44d66";
   const amount = document.getElementById("amount").value;
   const etype = document.getElementById("etype").value;
   const cat = document.getElementById("cat").value;
@@ -16,9 +16,15 @@ function expense(event) {
       showexpenseonscreen(res.data);
     })
     .catch((err) => console.error(err));
+  // try {
+  //   const res = await axios.post(`${api}/expense`, obj);
+  //   showexpenseonscreen(res.data);
+  // } catch (error) {
+  //   console.log(error);
+  // }
 }
 window.addEventListener("DOMContentLoaded", () => {
-  let api = "https://crudcrud.com/api/558a45ed74b04ad8b5dab7c6ebd44d66";
+  
 
   axios.get(`${api}/expense`).then((res) => {
     for (var i = 0; i < res.data.length; i++) {
@@ -28,25 +34,32 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 function showexpenseonscreen(obj) {
-  let api = "https://crudcrud.com/api/558a45ed74b04ad8b5dab7c6ebd44d66/expense";
+  
   const parentele = document.getElementById("listofitems");
   const grocery = document.getElementById("grocery");
   const maintenance = document.getElementById("maintenance");
   const entertainment = document.getElementById("entertainment");
   const childele = document.createElement("li");
-  childele.textContent = obj.amount + "-" + obj.cat + "-" + obj.etype;
+  childele.className ="list-group-item"
+  childele.textContent = obj.amount + "   " + obj.cat + "   " + obj.etype;
+  
   const deletebtn = document.createElement("input");
   deletebtn.type = "button";
   deletebtn.value = "Delete";
+  deletebtn.className="btn btn-outline-danger float-end"
   deletebtn.onclick = () => {
-    axios.delete(`${api}/${obj._id}`);
-    if (obj.cat === "grocery") {
-      grocery.removeChild(childele);
-    } else if (obj.cat === "entertainment") {
-      entertainment.removeChild(childele);
-    } else {
-      maintenance.removeChild(childele);
-    }
+    
+    axios.delete(`${api}/expense/${obj._id}`
+    ).then(() =>{
+      if (obj.cat === "grocery") {
+        grocery.removeChild(childele);
+      } else if (obj.cat === "entertainment") {
+        entertainment.removeChild(childele);
+      } else {
+        maintenance.removeChild(childele);
+      }
+    }).catch((err)=>console.log(err));
+    
     //localStorage.removeItem(obj.etype);
     //parentele.removeChild(childele);
   };

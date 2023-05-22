@@ -17,10 +17,10 @@
 </head>
 
 <body>
-  <div class="container-lg p-2">
+  <div class="container-xxl p-2">
     <div class="row p-2">
       <div class="col p-2">
-        <header>
+        <header class="p-2 text-center">
           <h1>Expense Tracker</h1>
           <!-- <h3>Enter Details</h3> -->
         </header>
@@ -28,10 +28,10 @@
       
     </div>
     
-    <div class="container p-2">
+    <div class="container w-25 float-start  p-2">
       <form onsubmit="expense(event)">
-        <div class=" container align-items-start p-2">
-          <div class=" container p-2 align-middle ">
+        <div class=" container   align-items-start p-2">
+          <div class=" container  p-2 align-middle ">
             <label for="exampleFormControlInput1" class="form-label">Expense Amount</label>
             <input class="form-control form-control-lg" type="text" name="amount" id="amount" placeholder="amount" />
           </div>
@@ -48,7 +48,7 @@
             <select class="form-select-lg form-select" aria-label="Default select example name=" type" id="etype">
               <option selected value="rice">rice</option>
               <option value="movie">movie</option>
-              <option value="electricity bill">electricity bill</option>
+              <option value="electric bill">electricity bill</option>
             </select>
           </div>
           <div class=" container p-2 align-middle ">
@@ -61,18 +61,18 @@
       </form>
     </div>
   </div>
-  <div class="container-lg p-2">
-  <div class="row p-2">
-    <div class="col p-2">
-      <h1>Grocery</h1>
+  <div class="container p-2 w-100">
+  <div class="row w-75 p-2  column-gap-3">
+    <div class="col  w-25 p-2">
+      <h2>Grocery</h2>
       <ul class="list-group" id="grocery"></ul>
     </div>
-    <div class="col p-2">
-      <h1>Entertainment</h1>
+    <div class="col w-25 p-2">
+      <h2>Entertainment</h2>
       <ul class="list-group" id="entertainment"></ul>
     </div>
-    <div class="col p-2">
-      <h1>Maintenance</h1>
+    <div class="col w-25 p-2">
+      <h2>Maintenance</h2>
       <ul class="list-group" id="maintenance"></ul>
     </div>
 
